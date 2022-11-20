@@ -6,9 +6,8 @@
 import Funciones
 import socket
 
-Mensaje_Descifrado = []
+mensaje_decifrar = []
 
-#COMUNICACION CON EL SERVER
 Host = "LocalHost"
 Puerto = 8000
 
@@ -37,35 +36,35 @@ for i in range(1):
     
     Mi_Socket.send(Mensaje_3.encode(encoding="ascii", errors="ignore"))
 
-    Mensaje_Cifrado = Mi_Socket.recv(1024)
-    Mensaje_Cifrado = Mensaje_Cifrado.decode(encoding = "ascii", errors = "ignore")
+    mensaje_cifrar = Mi_Socket.recv(1024)
+    mensaje_cifrar = Mensaje_Cifrado.decode(encoding = "ascii", errors = "ignore")
     
     Mi_Socket.send(Mensaje_4.encode(encoding="ascii", errors="ignore"))
     
 
-Mensaje_Cifrado = Mensaje_Cifrado.split(",")
-Mensaje_Cifrado.pop()
+mensaje_cifrar = mensaje_cifrar.split(",")
+mensaje_cifrar.pop()
 
-for pos in range(0, len(Mensaje_Cifrado)):
-    Mensaje_Cifrado[pos] = int(Mensaje_Cifrado[pos])
+for pos in range(0, len(mensaje_cifrar)):
+    mensaje_cifrar[pos] = int(mensaje_cifrar[pos])
 
 d = Funciones.modinv(e, fi_n)  #Llave privada
 
 #Descifrado
-for m in Mensaje_Cifrado:
-    Descifrado = pow(m, d) % n
-    Mensaje_Descifrado.append(Descifrado)
+for m in mensaje_cifrar:
+    descifrado = pow(m, d) % n
+    mensaje_decifrado.append(decifrado)
 
 
-print("Decifrado en ASCII:", Mensaje_Descifrado, "\n")
+print("Decifrado en ASCII:", mensaje_decifrado, "\n")
 
-Descifrado = ""
+decifrado = ""
 
-for i in Mensaje_Descifrado:
-    Descifrado += chr(i)
+for i in mensaje_decifrado:
+    decifrado += chr(i)
     
-print("Decifrado:", Descifrado)
+print("Decifrado:", decifrado)
 
-Salida = open('mensajerecibido.txt','w')
-Salida.write(Descifrado)
-Salida.close()
+salida = open('mensajerecibido.txt','w')
+salida.write(decifrado)
+salida.close()

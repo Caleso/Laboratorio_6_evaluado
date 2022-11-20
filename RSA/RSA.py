@@ -5,23 +5,22 @@
 
 import Funciones
 
-Letras_Ascii = []
-Mensaje_Cifrado = []
-Mensaje_Descifrado = []
+letras_ascii = []
+mensaje_cifrar = []
+mensaje_decifrar = []
 
-Entrada = open('mensajeentrada.txt','r') #Txt que contiene el texto plano
+mensaje = open('mensajeentrada.txt','r') #Txt que contiene el texto
 
-for i in Entrada.read():
-    Letras_Ascii.append(ord(i))
-#TextoPlano = Entrada.readlines()[0] #Extrae el texto plano del archivo
-Entrada.close()
+for i in mensaje.read():
+    letras_ascii.append(ord(i))
 
-print(Letras_Ascii,"\n")
+mensaje.close()
+
+print(letras_ascii,"\n")
     
 #Público
 P = 569
 Q = 839 
-
 n = P*Q
 fi_n = (P-1)*(Q-1)
 
@@ -36,21 +35,21 @@ while seguir:
 d = Funciones.modinv(e, fi_n)
 
 #Cifrado
-for m in Letras_Ascii:
-    Cifrado = pow(m, e) % n
-    Mensaje_Cifrado.append(Cifrado)
+for m in letras_ascii:
+    cifrado = pow(m, e) % n
+    mensaje_cifrar.append(Cifrado)
 
 #Descifrado
-for m in Mensaje_Cifrado:
-    Descifrado = pow(m, d) % n
-    Mensaje_Descifrado.append(Descifrado)
+for m in mensaje_cifrar:
+    descifrado = pow(m, d) % n
+    mensaje_decifrar.append(Descifrado)
 
 
-print("Decifrado en ASCII:", Mensaje_Descifrado, "\n")
+print("Decifrado en ASCII:", mensaje_decifrar, "\n")
 
-Descifrado = ""
+descifrado = ""
 
-for i in Mensaje_Descifrado:
+for i in mensaje_decifrar:
     Descifrado += chr(i)
     
-print("Decifrado:", Descifrado)
+print("Decifrado:", descifrado)

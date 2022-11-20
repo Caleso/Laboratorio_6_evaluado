@@ -42,25 +42,18 @@ for i in range(1):
     
     cifrado = Conexion.recv(1024)
     cifrado = cifrado.decode(encoding="ascii", errors="ignore")
-    #print(Cifrado)
     print("\n")
-    
-#print(Mensaje_Cifrado)
     
 cifrado = cifrado.split(",")
 
 for i in cifrado:
     if i != "":
         mensaje_cifrar.append(int(i))
-        
-    
-#print(Mensaje_Cifrado)
    
 #Descifrado
 for y2 in mensaje_cifrar:
     m = (pow(y1,(P-1-A))*y2) % P
     mensaje_decifrar.append(m)
-    #print("Decifrado en ASCII:", Mensaje_Descifrado, "\n")
 
 decifrado = ""
 
@@ -76,6 +69,6 @@ print("Mensaje Cifrado:", mensajito_cifrar)
 print("Mensaje Descifrado:", decifrado)
 
 
-Salida = open('mensajerecibido.txt','w')
-Salida.write(decifrado)
-Salida.close()
+salida = open('mensajerecibido.txt','w')
+salida.write(decifrado)
+salida.close()

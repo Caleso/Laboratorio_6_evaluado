@@ -6,18 +6,17 @@
 letras_ascii = []
 mensaje_cifrar = []
 mensaje_decifrar = []
-mensaje = open('mensajeentrada.txt','r') #Txt que contiene el texto plano
+mensaje = open('mensajeentrada.txt','r') #Txt que contiene el texto
 
 for i in mensaje.read():
     letras_ascii.append(ord(i))
-#texto = mensaje.readlines()[0] #Extrae el texto plano del archivo
 mensaje.close()
 
 print(letras_ascii,"\n")
     
 #Público
 P = 199
-G = 70 #Alpha, raíz primitiva de P 
+G = 70 #Alpha
 A = 13 #Clave Privada Emisor
 k = pow(G,A) % P #Clave pública
 
@@ -37,7 +36,7 @@ for i in letras_ascii:
     
 print("Cifrado en ELGAMAL es: ", mensaje_cifrar,"\n")
 print("Cifrado: ", cifrado, "\n")
-print("Cb(",letras_ascii,",",B,") = (",y1,",",mensaje_cifrar,")\n") #Respuesta
+print("Cb(",letras_ascii,",",B,") = (",y1,",",mensaje_cifrar,")\n")
 
 #Decifrado
 for i in mensaje_cifrar:

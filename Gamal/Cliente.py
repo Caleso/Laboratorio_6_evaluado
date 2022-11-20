@@ -6,14 +6,14 @@
 import socket
 
 mensaje_cifrar = ""
-letras_ascii = [] #Guarda el mensaje letra a letra en ascii
-mensaje = open('mensajeentrada.txt','r') #Txt que contiene el texto plano
+letras_ascii = [] #Guarda letra a letra en ascii
+mensaje = open('mensajeentrada.txt','r') #Txt que contiene el texto
 
 for i in mensaje.read():
     letras_ascii.append(ord(i))
 mensaje.close()
 
-cifrado =  ""#Almacena el mensaje cifrado
+cifrado =  ""
 B = int(input("Ingrese el valor de B: "))
 
 Host = "LocalHost"
@@ -48,5 +48,5 @@ for i in range(1):
     for i in cifrado:
         mensaje_cifrar += "," + str(ord(i))
         
-    Mi_Socket.send(mensaje_cifrar.encode(encoding="ascii", errors="ignore"))#Envia al server el mensaje cifrado en ascii
+    Mi_Socket.send(mensaje_cifrar.encode(encoding="ascii", errors="ignore"))
     

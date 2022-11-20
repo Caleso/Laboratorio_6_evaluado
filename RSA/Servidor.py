@@ -6,24 +6,17 @@
 import Funciones
 import socket
 
-Letras_Ascii = []
-Mensaje_Cifrado = ""
+letras_ascii = []
+mensaje_cifrar = ""
+mensaje = open('mensajeentrada.txt','r') #Txt que contiene el texto
 
-
-Entrada = open('mensajeentrada.txt','r') #Txt que contiene el texto plano
-
-for i in Entrada.read():
-    Letras_Ascii.append(ord(i))
-#TextoPlano = Entrada.readlines()[0] #Extrae el texto plano del archivo
-Entrada.close()
-
-
+for i in mensaje.read():
+    letras_ascii.append(ord(i))
+mensaje.close()
 
 #Primos privados
 P = 569
 Q = 839 
-
-
 n = P*Q #Llave publica
 fi_n = (P-1)*(Q-1)
 
@@ -37,14 +30,14 @@ while seguir:
         
 
 #Cifrado
-for m in Letras_Ascii:
-    Cifrado = pow(m, e) % n
-    Mensaje_Cifrado += str(Cifrado)+","
+for m in letras_ascii:
+    cifrado = pow(m, e) % n
+    mensaje_cifrar += str(cifrado)+","
     
 #VARIABLES PUBLICAS: e, n
+    
 #VARIABLES PRIVADAS: P, Q, fi_n
 
-#COMUNICACION CON EL CLIENTE
 Host = "LocalHost"
 Puerto = 8000
 
